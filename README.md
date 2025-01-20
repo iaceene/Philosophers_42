@@ -68,7 +68,7 @@ The main goal is to implement a solution that allows philosophers to:
 3. Run the program:
 
     ```bash
-    ./philosophers <number_of_philosophers> <time_to_die> <time_to_eat> <time_to_sleep>
+    ./philo <number_of_philosophers> <time_to_die> <time_to_eat> <time_to_sleep>
     ```
 
     Replace `<number_of_philosophers>`, `<time_to_die>`, `<time_to_eat>`, and `<time_to_sleep>` with appropriate values.
@@ -76,7 +76,7 @@ The main goal is to implement a solution that allows philosophers to:
     Example:
 
     ```bash
-    ./philosophers 5 800 200 200
+    ./philo 5 800 200 200
     ```
 
     In this example, there are 5 philosophers, each philosopher must die after 800 milliseconds of not eating, and philosophers will eat and sleep for 200 milliseconds each.
