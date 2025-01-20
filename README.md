@@ -1,6 +1,6 @@
 # Philosophers
 
-![1_SdI7qwsNa05IkyiMXlAmP](https://github.com/user-attachments/assets/0f928ba7-46a3-45e6-86bb-d48311a15775)
+![iaceene](https://github.com/user-attachments/assets/0f928ba7-46a3-45e6-86bb-d48311a15775)
 
 **Philosophers** : This project is part of the **42 the network**, a unique coding school that focuses on peer-to-peer learning and real-world coding practices. The goal of the Philosophers 42 project is to develop a program that simulates philosophers thinking and eating in a shared environment, inspired by the classical synchronization problem known as the **Dining Philosophers Problem**.
 
