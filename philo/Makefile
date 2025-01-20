@@ -1,8 +1,11 @@
-SRC = main.c memory.c
+SRC = 		main.c \
+			./mem/memory.c \
+			./parse/check_numbers_utiles.c \
+			./parse/check_numbers.c
 NAME = philo
 CFLAGS = -Wall -Wextra -Werror
 CC = cc 
-INCLUD = philo.h
+INCLUD = ./include/philo.h
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
