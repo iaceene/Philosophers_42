@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:01:06 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/20 20:16:31 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:25:35 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,11 @@ int	ft_parse_data(char **v, t_philo *data)
 	data->time_sleep = ft_get_number(v[4]);
 	if (data->time_sleep == 0)
 		return (1);
+	if (v[5])
+	{
+		data->n_of_eats = ft_get_number(v[5]);
+		if (data->time_sleep == 0)
+			return (1);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:04:36 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/21 10:22:32 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:28:42 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	ft_error(int i)
 		ft_put_error("Error : Invalid Numbers\nUsage : ");
 		ft_put_error("./philo 60 60 60 60\n");
 	}
+	if (i == 3)
+		ft_put_error("Error : an error occurred while launching...\n");
 	return (1);
 }
 

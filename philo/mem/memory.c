@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:14:59 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/20 20:15:34 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:29:56 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	*ft_malloc(ssize_t len)
 	if (!ptr)
 	{
 		ft_free(&head);
-		exit(1);
+		ft_error(3);
+		return (NULL);
 	}
 	ft_add_new(&head, ft_new_addr(ptr));
 	return (ptr);

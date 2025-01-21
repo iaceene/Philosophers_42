@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:14:29 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/20 20:14:44 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:33:38 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,15 @@ typedef struct s_philo
 	size_t	time_die;
 	size_t	time_eat;
 	size_t	time_sleep;
+	size_t	n_of_eats;
 }t_philo;
+
+typedef struct s_info
+{
+	int				id;
+	pthread_t		philo;
+	struct s_info	*next;	
+}t_info;
 
 void	*ft_malloc(ssize_t len);
 void	ft_put_error(char *s);
