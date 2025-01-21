@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:12:27 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/20 20:16:41 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:13:14 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int c, char **v)
 	int		err;
 
 	err = 0;
-	if (c != 5)
+	if (c < 5 || c > 6)
 		return (ft_error(1));
 	err = ft_parse_data(v, &data);
 	if (err == 1)

@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:04:36 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/20 20:16:26 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:19:24 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	ft_put_error(char *s)
 int	ft_error(int i)
 {
 	if (i == 1)
-		ft_put_error("invalid args\n");
+	{
+		ft_put_error("Error : Invalid args\nUsage : ");
+		ft_put_error("./philo [number_of_philo] [time_to_die] [time_to_eat] [time_to_sleep]\n");
+	}
 	if (i == 2)
 		ft_put_error("invalid numbers\n");
 	return (1);
