@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:01:46 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/22 21:22:55 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:25:41 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_info *new_philo(int id)
 	return (new_philo);
 }
 
-t_info *last_philo(t_info **head)
+t_info *ft_last_philo(t_info **head)
 {
 	t_info *tmp;
 
@@ -44,7 +44,7 @@ int ft_add_philo(t_info **head, t_info *new)
 	tmp = *head;
 	if (!tmp)
 	{
-		head = new;
+		*head = new;
 		return (0);
 	}
 	else
@@ -57,7 +57,7 @@ int ft_add_philo(t_info **head, t_info *new)
 
 int	ft_create_philo(t_philo *data, t_info **head)
 {
-	int i;
+	size_t i;
 	int err;
 
 	err = 0;
