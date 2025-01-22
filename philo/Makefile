@@ -1,7 +1,8 @@
 SRC = 		main.c \
 			./mem/memory.c \
 			./parse/check_numbers_utiles.c \
-			./parse/check_numbers.c
+			./parse/check_numbers.c \
+			./src/create_philos.c
 NAME = philo
 CFLAGS = -Wall -Wextra -Werror
 CC = cc 

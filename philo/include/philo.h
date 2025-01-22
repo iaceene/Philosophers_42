@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:14:29 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/21 10:33:38 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/22 21:05:29 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ size_t	ft_get_number(char *s);
 int		ft_check_sing(char *s, int i);
 int		ft_isnum(char c);
 size_t	ft_atos(char *s);
+int		ft_create_philo(t_philo *data, t_info **head);
 
 #endif
