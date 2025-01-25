@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:12:27 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/22 21:22:23 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/25 22:59:25 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,9 @@ int	main(int c, char **v)
 	err = ft_create_philo(&data, &info);
 	if (err == 1)
 		return (ft_malloc(-1), ft_error(3));
-	return (0);
+	data.philos = info;
+	err = ft_init(&data);
+	if (err == 1)
+		return (ft_malloc(-1), ft_error(3));
+	return (ft_malloc(-1), 0);
 }

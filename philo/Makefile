@@ -2,10 +2,12 @@ SRC = 		main.c \
 			./mem/memory.c \
 			./parse/check_numbers_utiles.c \
 			./parse/check_numbers.c \
-			./src/create_philos.c
+			./src/create_philos.c \
+			./src/ft_init.c
 NAME = philo
-CFLAGS = -Wall -Wextra -Werror
-CC = cc 
+CFLAGS = -Wall -Wextra -Werror -lpthread
+
+CC = gcc
 INCLUD = ./include/philo.h
 OBJ = $(SRC:.c=.o)
 
