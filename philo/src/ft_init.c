@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 22:57:00 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/25 23:24:20 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/27 21:37:02 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,33 @@
 
 void	*philos_rotin(void *args)
 {
-	t_philo	*data;
+	t_info	*data;
+	pthread_mutex_t locker;
 
-	data = (t_philo *)args;
-	printf("done ! from %d\n", data->tmp_id);
-	return ((void *)data->n_of_eats);
+	pthread_mutex_init(&locker, NULL);
+	pthread_mutex_lock(&locker);
+	data = (t_info *)args;
+	printf("done ! from %d\n", data->id);
+	pthread_mutex_unlock(&locker);
+	return (NULL);
 }
 
 int	ft_create_threads(t_philo *data)
 {
 	t_info	*tmp;
+	int		i;
 	int		err;
 
+	i = 1;
 	tmp = data->philos;
 	while (tmp)
 	{
-		data->tmp_id = tmp->id;
-		err = pthread_create(&tmp->philo, NULL, philos_rotin, (void *)data);
+		tmp->id = i;
+		err = pthread_create(&tmp->philo, NULL, philos_rotin, (void *)data->philos);
 		if (err != 0)
 			return (1);
 		tmp = tmp->next;
+		i++;
 	}
 	return (0);
 }
