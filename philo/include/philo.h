@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:14:29 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/25 23:24:49 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/28 22:03:25 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "unistd.h"
 # include "string.h"
 # include "pthread.h"
-# include "time.h"
+# include "sys/time.h"
 
 typedef struct s_gb
 {
@@ -55,5 +55,6 @@ int		ft_isnum(char c);
 size_t	ft_atos(char *s);
 int		ft_init(t_philo *data);
 int		ft_create_philo(t_philo *data, t_info **head);
+time_t	ft_get_time(void);
 
 #endif

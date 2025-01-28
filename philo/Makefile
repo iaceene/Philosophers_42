@@ -3,7 +3,8 @@ SRC = 		main.c \
 			./parse/check_numbers_utiles.c \
 			./parse/check_numbers.c \
 			./src/create_philos.c \
-			./src/ft_init.c
+			./src/ft_init.c \
+			./src/time.c
 NAME = philo
 CFLAGS = -Wall -Wextra -Werror -lpthread
 
