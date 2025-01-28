@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:01:06 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/21 10:25:35 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/28 23:14:25 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ int	ft_parse_data(char **v, t_philo *data)
 	data->n_philo = ft_get_number(v[1]);
 	if (data->n_philo == 0)
 		return (1);
-	data->time_die = ft_get_number(v[2]);
+	data->time_die = (time_t)ft_get_number(v[2]);
 	if (data->time_die == 0)
 		return (1);
-	data->time_eat = ft_get_number(v[3]);
+	data->time_eat = (time_t)ft_get_number(v[3]);
 	if (data->time_eat == 0)
 		return (1);
-	data->time_sleep = ft_get_number(v[4]);
+	data->time_sleep = (time_t)ft_get_number(v[4]);
 	if (data->time_sleep == 0)
 		return (1);
 	if (v[5])

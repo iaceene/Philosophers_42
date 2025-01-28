@@ -6,13 +6,13 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:01:46 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/25 23:25:34 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/01/28 23:10:39 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-t_info	*new_philo(int id)
+t_info	*new_philo(int id, t_philo *data)
 {
 	t_info	*new_philo;
 
@@ -20,6 +20,7 @@ t_info	*new_philo(int id)
 	if (!new_philo)
 		return (NULL);
 	new_philo->id = id;
+	new_philo->data = data;
 	new_philo->next = NULL;
 	return (new_philo);
 }
@@ -64,7 +65,7 @@ int	ft_create_philo(t_philo *data, t_info **head)
 	i = 0;
 	while (i < data->n_philo)
 	{
-		err = ft_add_philo(head, new_philo(i));
+		err = ft_add_philo(head, new_philo(i, data));
 		if (err == 1)
 			return (1);
 		i++;
