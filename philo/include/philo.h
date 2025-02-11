@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:14:29 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/28 23:13:44 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/11 23:50:07 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include "string.h"
 # include "pthread.h"
 # include "sys/time.h"
+
+# define TAKE_FORKS "has taken a fork"
+# define THINKING "is thinking"
+# define SLEEPING "is sleeping"
+# define EATING "is eating"
+# define DIED "died"
 
 typedef struct s_gb
 {
@@ -40,7 +46,9 @@ typedef struct s_info
 	int				id;
 	pthread_t		philo;
 	t_philo			*data;
-	struct s_info	*next;	
+	pthread_mutex_t	right_fork;
+	pthread_mutex_t	left_fork;
+	struct s_info	*next;
 }t_info;
 
 void	*ft_malloc(ssize_t len);
