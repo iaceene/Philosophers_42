@@ -6,29 +6,29 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 22:57:00 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/28 23:14:49 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/12 00:25:17 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	*philos_rotin(void *args)
+void	*philos_rotine(void *args)
 {
-	t_info	*data;
-	time_t	cur;
-	time_t	die_t;
-	time_t	tmp;
+	t_info	*philo;
+	// time_t	cur;
+	// time_t	die_t;
+	// time_t	tmp;
 
-	data = (t_info *)args;
-	cur = ft_get_time();
-	die_t = data->data->time_die;
+	philo = (t_info *)args;
+	// cur = ft_get_time();
+	// die_t = data->data->time_die;
 	// while (1)
 	// {
 	// 		tmp = ft_get_time() - cur;
 	// 		if (tmp == die_t)
 	// 			break;
 	// }
-	printf("philo %d die!\n", data->id);
+	message(philo, 1);
 	return (NULL);
 }
 
@@ -43,7 +43,7 @@ int	ft_create_threads(t_info *data)
 	while (tmp)
 	{
 		tmp->id = i;
-		err = pthread_create(&tmp->philo, NULL, philos_rotin, (void *)tmp);
+		err = pthread_create(&tmp->philo, NULL, philos_rotine, (void *)tmp);
 		if (err != 0)
 			return (1);
 		tmp = tmp->next;
@@ -70,6 +70,9 @@ int	ft_init(t_info *data)
 {
 	int	err;
 
+	data->data->start_time = ft_get_time();
+	if (data->data->start_time == -1)
+		return (1);
 	err = ft_create_threads(data);
 	if (err == 1)
 		return (1);

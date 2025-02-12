@@ -4,7 +4,8 @@ SRC = 		main.c \
 			./parse/check_numbers.c \
 			./src/create_philos.c \
 			./src/ft_init.c \
-			./src/time.c
+			./src/time.c \
+			./src/message.c
 NAME = philo
 CFLAGS = -Wall -Wextra -Werror -lpthread
 

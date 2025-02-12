@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:01:46 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/28 23:10:39 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/12 00:30:14 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ t_info	*new_philo(int id, t_philo *data)
 	if (!new_philo)
 		return (NULL);
 	new_philo->id = id;
+	new_philo->meals_eaten = 0;
+	new_philo->last_eat = 0;
+	new_philo->alive = true;
 	new_philo->data = data;
 	new_philo->next = NULL;
 	return (new_philo);
@@ -65,7 +68,7 @@ int	ft_create_philo(t_philo *data, t_info **head)
 	i = 0;
 	while (i < data->n_philo)
 	{
-		err = ft_add_philo(head, new_philo(i, data));
+		err = ft_add_philo(head, new_philo(i + 1, data));
 		if (err == 1)
 			return (1);
 		i++;

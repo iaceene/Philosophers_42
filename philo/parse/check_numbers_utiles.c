@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:04:36 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/21 10:28:42 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/12 00:48:37 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ int	ft_error(int i)
 {
 	if (i == 1)
 	{
-		ft_put_error("Error : Invalid Arguments\nUsage : ");
-		ft_put_error("./philo [number_of_philo] [time_to_die] ");
+		ft_put_error(RED"Error"RESET" : Invalid Arguments\n"GREEN"Usage : ");
+		ft_put_error(RESET"./philo [number_of_philo] [time_to_die] ");
 		ft_put_error("[time_to_eat] [time_to_sleep]\n");
 	}
 	if (i == 2)
 	{
-		ft_put_error("Error : Invalid Numbers\nUsage : ");
-		ft_put_error("./philo 60 60 60 60\n");
+		ft_put_error(RED"Error"RESET": Invalid Numbers\n"GREEN"Usage : ");
+		ft_put_error(RESET"./philo 60 60 60 60\n");
 	}
 	if (i == 3)
-		ft_put_error("Error : an error occurred while launching...\n");
+		ft_put_error(RED"Error"RESET": an error occurred while launching...\n");
 	return (1);
 }
 
