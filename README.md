@@ -93,6 +93,8 @@ The main goal is to implement a solution that allows philosophers to:
 
 For additional information on synchronization and concurrency, you may want to review the following concepts:
 
+- **DEADLOCK**: [https://cs61.seas.harvard.edu/site/2018/Synch5/]
+
 - **POSIX Threads (pthreads)**: [https://man7.org/linux/man-pages/man3/pthread_create.3.html](https://man7.org/linux/man-pages/man3/pthread_create.3.html)
 - **Mutexes and Semaphores**: [https://en.wikipedia.org/wiki/Mutex](https://en.wikipedia.org/wiki/Mutex), [https://en.wikipedia.org/wiki/Semaphore_(programming)](https://en.wikipedia.org/wiki/Semaphore_(programming))
 - **Dining Philosophers Problem**: [https://en.wikipedia.org/wiki/Dining_philosophers_problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem)
