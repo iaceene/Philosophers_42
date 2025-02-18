@@ -1,4 +1,4 @@
-# Philosophers
+# Philosophers42
 
 ![iaceene](https://github.com/user-attachments/assets/0f928ba7-46a3-45e6-86bb-d48311a15775)
 
