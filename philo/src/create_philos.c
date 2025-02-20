@@ -6,13 +6,13 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:01:46 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/20 18:42:06 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:47:33 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int start_mutexes(t_data *data)
+int	start_mutexes(t_data *data)
 {
 	size_t	i;
 
@@ -71,7 +71,8 @@ int	ft_create_philos(t_data *data)
 	{
 		data->philo[i].last_eat = ft_get_time();
 		data->philo[i].alive = true;
-		if (pthread_create(&data->philo[i].thread_id, NULL, routine, &data->philo[i]) != 0)
+		if (pthread_create(&data->philo[i].thread_id, NULL,
+				routine, &data->philo[i]) != 0)
 			return (1);
 		usleep(100);
 		i++;

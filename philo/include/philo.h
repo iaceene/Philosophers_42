@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:14:29 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/20 18:40:53 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:46:40 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,19 @@
 # include "string.h"
 # include "pthread.h"
 # include "sys/time.h"
-
 # define TAKE_FORKS "has taken a fork"
 # define THINKING "is thinking"
 # define SLEEPING "is sleeping"
 # define EATING "is eating"
 # define DIED "died"
-
-#define RED     "\x1B[31m"
-#define GREEN   "\x1B[32m"
-#define YELLOW  "\x1B[33m"
-#define BLUE    "\x1B[34m"
-#define MAGENTA "\x1B[35m"
-#define CYAN    "\x1B[36m"
-#define RESET   "\x1B[0m"
-
-#define MAX_NUMBER_PHILO 200
+# define RED     "\x1B[31m"
+# define GREEN   "\x1B[32m"
+# define YELLOW  "\x1B[33m"
+# define BLUE    "\x1B[34m"
+# define MAGENTA "\x1B[35m"
+# define CYAN    "\x1B[36m"
+# define RESET   "\x1B[0m"
+# define MAX_NUMBER_PHILO 200
 
 typedef struct s_gb
 {
@@ -80,8 +77,6 @@ int		ft_isnum(char c);
 size_t	ft_atos(char *s);
 time_t	ft_get_time(void);
 void	message(t_philo *philo, int state);
-
-
 // mew
 void	inialize_philos(t_data *data);
 int		start_mutexes(t_data *data);
