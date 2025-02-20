@@ -6,13 +6,13 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 23:50:52 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/12 00:42:57 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:01:29 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	message(t_info *philo, int state)
+void	message(t_philo *philo, int state)
 {
 	if (!philo)
 		return ;

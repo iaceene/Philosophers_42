@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:01:06 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/12 00:52:49 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:03:19 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ size_t	ft_get_number(char *s)
 	return (ft_atos(s));
 }
 
-int	ft_parse_data(char **v, t_philo *data)
+int	ft_parse_data(char **v, t_data *data)
 {
 	data->n_philo = ft_get_number(v[1]);
 	if (data->n_philo == 0)
@@ -75,12 +75,12 @@ int	ft_parse_data(char **v, t_philo *data)
 		return (1);
 	if (v[5])
 	{
-		data->nofeats_flag = true;
+		data->n_of_eats_f = true;
 		data->n_of_eats = ft_get_number(v[5]);
 		if (data->time_sleep == 0)
 			return (1);
 	}
 	else
-		data->nofeats_flag = false;
+		data->n_of_eats_f = false;
 	return (0);
 }

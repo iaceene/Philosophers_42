@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:12:27 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/01/28 22:55:55 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:23:45 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 int	main(int c, char **v)
 {
-	t_philo	data;
-	t_info	*info;
+	t_data	data;
 	int		err;
 
 	err = 0;
-	info = NULL;
 	if (c < 5 || c > 6)
 		return (ft_error(1));
 	err = ft_parse_data(v, &data);
 	if (err == 1)
 		return (ft_malloc(-1), ft_error(2));
-	err = ft_create_philo(&data, &info);
+	err = start_mutexes(&data);
 	if (err == 1)
 		return (ft_malloc(-1), ft_error(3));
-	info->data = &data;
-	err = ft_init(info);
+	inialize_philos(&data);
+	err = ft_create_philos(&data);
 	if (err == 1)
 		return (ft_malloc(-1), ft_error(3));
 	return (ft_malloc(-1), 0);

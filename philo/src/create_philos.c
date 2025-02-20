@@ -6,72 +6,77 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:01:46 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/12 00:30:14 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:42:06 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-t_info	*new_philo(int id, t_philo *data)
+int start_mutexes(t_data *data)
 {
-	t_info	*new_philo;
+	size_t	i;
 
-	new_philo = ft_malloc(sizeof(t_info));
-	if (!new_philo)
-		return (NULL);
-	new_philo->id = id;
-	new_philo->meals_eaten = 0;
-	new_philo->last_eat = 0;
-	new_philo->alive = true;
-	new_philo->data = data;
-	new_philo->next = NULL;
-	return (new_philo);
-}
-
-t_info	*ft_last_philo(t_info **head)
-{
-	t_info	*tmp;
-
-	tmp = *head;
-	while (tmp && tmp->next)
-		tmp = tmp->next;
-	return (tmp);
-}
-
-int	ft_add_philo(t_info **head, t_info *new)
-{
-	t_info	*tmp;
-	t_info	*last;
-
-	if (!head || !new)
-		return (1);
-	tmp = *head;
-	if (!tmp)
+	i = 0;
+	while (i < data->n_philo)
 	{
-		*head = new;
-		return (0);
+		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+			return (1);
+		i++;
 	}
-	else
+	if (pthread_mutex_init(&data->printing, NULL) != 0)
+		return (1);
+	return (0);
+}
+
+void	inialize_philos(t_data *data)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < data->n_philo)
 	{
-		last = ft_last_philo(head);
-		last->next = new;
+		data->philo[i].id = (int)i + 1;
+		data->philo[i].last_eat = 0;
+		data->philo[i].meals_eaten = 0;
+		data->philo[i].right_fork = &data->forks[i];
+		if (i == data->n_philo - 1)
+			data->philo[i].right_fork = &data->forks[0];
+		else
+			data->philo[i].right_fork = &data->forks[i + 1];
+		i++;
+	}
+}
+
+int	ft_join_philos(t_data *data)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < data->n_philo)
+	{
+		if (pthread_join(data->philo[i].thread_id, NULL) != 0)
+			return (1);
+		i++;
 	}
 	return (0);
 }
 
-int	ft_create_philo(t_philo *data, t_info **head)
+int	ft_create_philos(t_data *data)
 {
 	size_t	i;
-	int		err;
 
-	err = 0;
 	i = 0;
+	data->start_time = ft_get_time();
 	while (i < data->n_philo)
 	{
-		err = ft_add_philo(head, new_philo(i + 1, data));
-		if (err == 1)
+		data->philo[i].last_eat = ft_get_time();
+		data->philo[i].alive = true;
+		if (pthread_create(&data->philo[i].thread_id, NULL, routine, &data->philo[i]) != 0)
 			return (1);
+		usleep(100);
 		i++;
 	}
+	if (ft_join_philos(data))
+		return (1);
 	return (0);
 }
