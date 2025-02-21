@@ -49,7 +49,7 @@ void	*monitor(void *args)
 		i = 0;
 		while (i < data->n_philo)
 		{
-			if ((ft_get_time() - data->philo[i].last_eat) == data->time_die)
+			if ((ft_get_time() - data->philo[i].last_eat) >= data->time_die)
 			{
 				if (data->n_of_eats_f)
 				{
