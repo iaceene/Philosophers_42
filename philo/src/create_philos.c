@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:01:46 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/21 15:10:59 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/21 18:20:46 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	inialize_philos(t_data *data)
 		data->philo[i].id = (int)i + 1;
 		data->philo[i].last_eat = 0;
 		data->philo[i].meals_eaten = 0;
-		data->philo[i].right_fork = &data->forks[i];
+		data->philo[i].left_fork = &data->forks[i];
 		if (i == data->n_philo - 1)
 			data->philo[i].right_fork = &data->forks[0];
 		else
@@ -80,6 +80,7 @@ int	ft_create_philos(t_data *data)
 		i++;
 	}
 	data->all_started = true;
+	data->end_simu = false;
 	data->start_time = ft_get_time();
 	if ((pthread_create(&data->monitor_id, NULL,
 			monitor, data) != 0) || ft_join_philos(data))

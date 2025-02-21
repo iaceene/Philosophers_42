@@ -7,7 +7,7 @@ SRC = 		main.c \
 			./src/time.c \
 			./src/message.c
 NAME = philo
-CFLAGS = -Wall -Wextra -Werror -lpthread -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -lpthread #-fsanitize=address -g
 
 CC = gcc
 INCLUD = ./include/philo.h
