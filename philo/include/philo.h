@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:14:29 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/20 18:46:40 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:07:05 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_philo
 	size_t			meals_eaten;
 	time_t			last_eat;
 	bool			alive;
+	struct s_data	*data;
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*left_fork;
 }t_philo;
@@ -61,6 +62,9 @@ typedef struct s_data
 	size_t			n_of_eats;
 	time_t			start_time;
 	bool			end_simu;
+	bool			still_alive;
+	bool			all_started;
+	pthread_t		monitor_id;
 	t_philo			philo[MAX_NUMBER_PHILO];
 	pthread_mutex_t	forks[MAX_NUMBER_PHILO];
 	pthread_mutex_t	printing;
@@ -82,4 +86,5 @@ void	inialize_philos(t_data *data);
 int		start_mutexes(t_data *data);
 int		ft_create_philos(t_data *data);
 void	*routine(void *data);
+void	*monitor(void *data);
 #endif

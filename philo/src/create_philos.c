@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:01:46 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/20 18:47:33 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:10:59 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ int	ft_join_philos(t_data *data)
 	i = 0;
 	while (i < data->n_philo)
 	{
-		if (pthread_join(data->philo[i].thread_id, NULL) != 0)
+		if (pthread_detach(data->philo[i].thread_id))
 			return (1);
 		i++;
 	}
+	if (pthread_join(data->monitor_id, NULL) != 0)
+		return (1);
 	return (0);
 }
 
@@ -66,18 +68,21 @@ int	ft_create_philos(t_data *data)
 	size_t	i;
 
 	i = 0;
-	data->start_time = ft_get_time();
+	data->all_started = false;
 	while (i < data->n_philo)
 	{
 		data->philo[i].last_eat = ft_get_time();
+		data->philo[i].data = data;
 		data->philo[i].alive = true;
 		if (pthread_create(&data->philo[i].thread_id, NULL,
 				routine, &data->philo[i]) != 0)
 			return (1);
-		usleep(100);
 		i++;
 	}
-	if (ft_join_philos(data))
+	data->all_started = true;
+	data->start_time = ft_get_time();
+	if ((pthread_create(&data->monitor_id, NULL,
+			monitor, data) != 0) || ft_join_philos(data))
 		return (1);
 	return (0);
 }

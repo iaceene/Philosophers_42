@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 23:50:52 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/20 18:01:29 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/21 13:50:56 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void	message(t_philo *philo, int state)
 {
+	time_t curr;
+
+	pthread_mutex_lock(&philo->data->printing);
+	curr = ft_get_time()- philo->data->start_time;
 	if (!philo)
 		return ;
 	if (state == 1)
-		printf("Philo %d %s\n", philo->id, TAKE_FORKS);
+		printf("[ %ld ] Philo %d %s\n", curr, philo->id, TAKE_FORKS);
 	else if (state == 2)
-		printf("Philo %d %s\n", philo->id, THINKING);
+		printf("[ %ld ] Philo %d %s\n", curr, philo->id, THINKING);
 	else if (state == 3)
-		printf("Philo %d %s\n", philo->id, SLEEPING);
+		printf("[ %ld ] Philo %d %s\n", curr, philo->id, SLEEPING);
 	else if (state == 4)
-		printf("Philo %d %s\n", philo->id, EATING);
+		printf("[ %ld ] Philo %d %s\n", curr, philo->id, EATING);
 	else if (state == 5)
-		printf("Philo %d %s\n", philo->id, DIED);
-	else
-		return ;
+		printf("[ %ld ] Philo %d %s\n", curr, philo->id, DIED);
+	pthread_mutex_unlock(&philo->data->printing);
 }
