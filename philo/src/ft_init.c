@@ -92,29 +92,20 @@ void	*routine(void *data)
 	while (!philo->data->all_started);
 	while (!philo->data->end_simu)
 	{
+		message(philo, 2);
+		if (philo->data->n_of_eats_f
+			&& philo->meals_eaten >= philo->data->n_of_eats)
+			break ;
 		if (is_odd(philo->id))
 		{
-			if (philo->data->n_of_eats_f)
-			{
-				if (philo->meals_eaten < philo->data->n_of_eats)
-					ft_eat(philo);
-			}
-			else
-				ft_eat(philo);
+			ft_eat(philo);
 			ft_sleep(philo);
 		}
 		else
 		{
 			ft_sleep(philo);
-			if (philo->data->n_of_eats_f)
-			{
-				if (philo->meals_eaten < philo->data->n_of_eats)
-					ft_eat(philo);
-			}
-			else
-				ft_eat(philo);
+			ft_eat(philo);
 		}
-		message(philo, 2);
 	}
 	return (NULL);
 }
