@@ -6,11 +6,37 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 22:57:00 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/21 18:33:40 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:33:47 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+int ft_check_meals(t_philo *philo)
+{
+	int flag;
+	size_t count;
+	size_t i;
+
+	flag = 0;
+	i = 0;
+	count = 0;
+	if (philo->meals_eaten == philo->data->n_of_eats)
+		flag = 1;
+	while (i < philo->data->n_philo)
+	{
+		if (philo->meals_eaten == philo->data->n_of_eats)
+			count++;	
+		i++;
+	}
+	if (count == philo->data->n_philo)
+		return (1);
+	else if (flag == 1)
+		return (99);
+	else
+		return (-1);
+	return (0);
+}
 
 void	*monitor(void *args)
 {
@@ -25,9 +51,27 @@ void	*monitor(void *args)
 		{
 			if ((ft_get_time() - data->philo[i].last_eat) == data->time_die)
 			{
-				data->end_simu = true;
-				message(&data->philo[i], 5);
-				break;
+				if (data->n_of_eats_f)
+				{
+					int err = ft_check_meals(&data->philo[i]);
+					if (err == 1)
+					{
+						data->end_simu = true;
+						break;
+					}
+					else if (err == -1)
+					{
+						data->end_simu = true;
+						message(&data->philo[i], 5);
+						break;
+					}
+				}
+				else
+				{
+					data->end_simu = true;
+					message(&data->philo[i], 5);
+					break;
+				}
 			}
 			i++;
 		}
@@ -50,13 +94,25 @@ void	*routine(void *data)
 	{
 		if (is_odd(philo->id))
 		{
-			ft_eat(philo);
+			if (philo->data->n_of_eats_f)
+			{
+				if (philo->meals_eaten < philo->data->n_of_eats)
+					ft_eat(philo);
+			}
+			else
+				ft_eat(philo);
 			ft_sleep(philo);
 		}
 		else
 		{
 			ft_sleep(philo);
-			ft_eat(philo);
+			if (philo->data->n_of_eats_f)
+			{
+				if (philo->meals_eaten < philo->data->n_of_eats)
+					ft_eat(philo);
+			}
+			else
+				ft_eat(philo);
 		}
 		message(philo, 2);
 	}
@@ -75,6 +131,7 @@ void	ft_eat(t_philo *philo)
 	message(philo, 1);
 	pthread_mutex_lock(philo->left_fork);
 	message(philo, 1);
+	philo->meals_eaten++;
 	message(philo, 4);
 	philo->last_eat = ft_get_time();
 	usleep(philo->data->time_eat * 1000);

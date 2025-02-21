@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 23:50:52 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/21 18:37:35 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:11:29 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	message(t_philo *philo, int state)
 
 	pthread_mutex_lock(&philo->data->printing);
 	curr = ft_get_time()- philo->data->start_time;
+	if (philo->data->n_of_eats_f)
+		printf("[ %ld ] ", philo->meals_eaten);
 	if (!philo)
 		return ;
 	if (state == 1)
