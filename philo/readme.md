@@ -1,5 +1,5 @@
-check for leaks!             [x]
-destroy any mutex aviable    [x]
+check for leaks!             [/]
+destroy any mutex aviable    [/]
 optimize the code            [x]
 fix the norm                 [x] 
 start the bonus              [x]

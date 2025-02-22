@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 20:14:29 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/21 14:07:05 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/22 13:17:34 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,5 @@ int		start_mutexes(t_data *data);
 int		ft_create_philos(t_data *data);
 void	*routine(void *data);
 void	*monitor(void *data);
+void	ft_destroy_mutexes(t_data *data, int start);
 #endif

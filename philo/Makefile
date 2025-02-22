@@ -5,7 +5,8 @@ SRC = 		main.c \
 			./src/create_philos.c \
 			./src/ft_init.c \
 			./src/time.c \
-			./src/message.c
+			./src/message.c \
+			./src/destroy_mutex.c
 NAME = philo
 CFLAGS = -Wall -Wextra -Werror -lpthread #-fsanitize=address -g
 

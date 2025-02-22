@@ -6,7 +6,7 @@
 /*   By: yaajagro <yaajagro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 21:01:46 by yaajagro          #+#    #+#             */
-/*   Updated: 2025/02/21 18:20:46 by yaajagro         ###   ########.fr       */
+/*   Updated: 2025/02/22 13:17:02 by yaajagro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	start_mutexes(t_data *data)
 	while (i < data->n_philo)
 	{
 		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
-			return (1);
+			return (ft_destroy_mutexes(data, i), 1);
 		i++;
 	}
 	if (pthread_mutex_init(&data->printing, NULL) != 0)
-		return (1);
+		return (ft_destroy_mutexes(data, -1), 1);
 	return (0);
 }
 
